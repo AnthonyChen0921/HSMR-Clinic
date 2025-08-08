@@ -98,32 +98,24 @@ def append_line(path: Path, text: str):
     with open(path, "a", encoding="utf-8") as f:
         f.write(text.rstrip() + "\n")
 
-
 def build_ydl_opts(out_dir: Path, cookies=None):
     opts = {
-        # Prefer MP4-only outputs; fall back sanely
-        "format": (
-            "bestvideo[ext=mp4]+bestaudio[ext=m4a]/"
-            "best[ext=mp4]/best"
-        ),
+        "format": "best[ext=mp4]/bestvideo[ext=mp4]+bestaudio[ext=m4a]/best",
         "merge_output_format": "mp4",
-        "outtmpl": str(out_dir / "%(id)s.%(ext)s"),
-        "noplaylist": True,
-        "ignoreerrors": True,      # continue on individual errors
-        "no_warnings": False,
-        "writethumbnail": False,
-        "writeinfojson": False,    # no .info.json
-        "keepvideo": False,        # no leftover separate streams
-        "continuedl": True,        # resume partial downloads
-        "retries": 10,
+        "outtmpl": str(out_dir / "%(id)s.%(ext)s"),  # GAVD_<id>.mp4
+        "ignoreerrors": True,
+        "continuedl": True,
+        "retries": 3,
         "fragment_retries": 10,
-        # Slight politeness; you can tune further if throttled
-        "ratelimit": 0,
+        "writeinfojson": False,
+        "keepvideo": False,
         "concurrent_fragment_downloads": 1,
+        "noplaylist": True,
     }
     if cookies:
         opts["cookiefile"] = cookies
     return opts
+
 
 
 def main():
