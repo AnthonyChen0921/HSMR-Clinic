@@ -15,3 +15,17 @@ pyrightconfig.json
 
 # Logs.
 gpu_monitor.log
+
+# Ignore GAVD folders containing video files and large data
+GAVD-*/
+
+# Other large data directories
+DCM-GaitVideos/
+DCM-RawGaitVideos/
+GaitRite-GaitData/
+HSMR-DCM-SKEL-params/
+skel_models_v1.1/
+
+# Temporary files
+*.tmp
+tmp*
