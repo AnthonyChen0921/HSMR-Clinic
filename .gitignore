@@ -30,3 +30,6 @@ skel_models_v1.1/
 # Temporary files
 *.tmp
 tmp*
+
+# Virtual environment
+.venv/
