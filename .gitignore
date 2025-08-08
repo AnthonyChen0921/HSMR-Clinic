@@ -18,6 +18,7 @@ gpu_monitor.log
 
 # Ignore GAVD folders containing video files and large data
 GAVD-*/
+GAVD/
 
 # Other large data directories
 DCM-GaitVideos/
